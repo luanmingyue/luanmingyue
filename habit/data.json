@@ -1,0 +1,36 @@
+{
+  "owner": "栾铭月",
+  "updatedAt": "2026-10-01T09:57:49Z",
+  "day": {
+    "date": "2026-10-01",
+    "label": "10月1日 周四",
+    "items": [
+      { "name": "喝水", "type": "water", "cups": 0, "target": 5 },
+      { "name": "运动", "type": "check", "completed": false },
+      { "name": "写作业 1", "type": "check", "completed": false },
+      { "name": "写作业 2", "type": "check", "completed": false },
+      { "name": "IELTS 练习（2 小时）", "type": "ielts", "elapsedMs": 0, "targetMs": 7200000 },
+      { "name": "AI 练习", "type": "check", "completed": false },
+      { "name": "剪辑练习", "type": "check", "completed": false }
+    ],
+    "week": [
+      { "date": "2026-09-25", "weekday": "五", "day": 25, "completed": 0, "total": 7 },
+      { "date": "2026-09-26", "weekday": "六", "day": 26, "completed": 0, "total": 7 },
+      { "date": "2026-09-27", "weekday": "日", "day": 27, "completed": 0, "total": 7 },
+      { "date": "2026-09-28", "weekday": "一", "day": 28, "completed": 0, "total": 7 },
+      { "date": "2026-09-29", "weekday": "二", "day": 29, "completed": 0, "total": 7 },
+      { "date": "2026-09-30", "weekday": "三", "day": 30, "completed": 0, "total": 7 },
+      { "date": "2026-10-01", "weekday": "四", "day": 1, "completed": 0, "total": 7 }
+    ]
+  },
+  "month": {
+    "label": "2026年10月",
+    "subjects": [
+      { "name": "Cultural Spaces", "group": false, "personal": false, "groupLabel": "小组作业", "personalLabel": "个人作业" },
+      { "name": "EAP", "group": false, "personal": false, "groupLabel": "小组作业", "personalLabel": "个人作业" },
+      { "name": "Environmental CS", "group": false, "personal": false, "groupLabel": "小组作业", "personalLabel": "个人作业" },
+      { "name": "New media art", "group": false, "personal": false, "groupLabel": "小组作业", "personalLabel": "个人作业" },
+      { "name": "RCM", "group": false, "personal": false, "groupLabel": "小组作业", "personalLabel": "个人作业" }
+    ]
+  }
+}
