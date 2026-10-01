@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5fcf5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2718%27 fill=%27%23f5fcf5%27/%3E%3Cpath d=%27M17 33l10 10 20-23%27 fill=%27none%27 stroke=%27%230f8f86%27 stroke-width=%277%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3Ccircle cx=%2748%27 cy=%2714%27 r=%276%27 fill=%27%23ff9dcc%27/%3E%3C/svg%3E">
+<title>栾铭月的习惯进度 · 只读</title>
+<style>
+:root{--bg:#f5fcf5;--paper:rgba(255,255,255,.82);--ink:#29332f;--muted:#77817c;--line:rgba(43,70,61,.16);--teal:#0f8f86;--teal-dark:#176f66;--mint:#e2f7f0;--pink:#ff9dcc;--pink-soft:#fdeaf4;--yellow:#f3e77d;--ice:#9edce8;--done:#ecefed;--done-ink:#858d89;--shadow:0 22px 60px rgba(37,74,61,.075);--shadow-sm:0 10px 30px rgba(37,74,61,.055)}
+*{box-sizing:border-box}
+html{min-height:100%;background:var(--bg)}
+body{margin:0;min-height:100vh;color:var(--ink);background:radial-gradient(circle at 88% 8%,rgba(255,157,204,.2),transparent 23rem),radial-gradient(circle at 9% 32%,rgba(158,220,232,.18),transparent 25rem),linear-gradient(180deg,#f4fcf5,#fbfdfb 48%,#f4fbf5);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.14;background-image:radial-gradient(circle,rgba(15,143,134,.32) .7px,transparent .8px),linear-gradient(90deg,transparent 49.6%,rgba(43,70,61,.1) 50%,transparent 50.4%);background-size:10px 10px,28px 28px;mask-image:linear-gradient(135deg,#000,transparent 54%,#000)}
+.ambient{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.ambient svg{position:absolute;top:-10vh;left:-12vw;width:min(72vw,940px);min-width:720px;height:122vh;opacity:.5}
+.ambient .lines{transform-box:fill-box;transform-origin:42% 52%;animation:sway 14s ease-in-out infinite alternate}
+.ambient .soft{transform-box:fill-box;transform-origin:50% 50%;animation:blob 21s ease-in-out infinite alternate}
+.ambient path{fill:none;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+.app{position:relative;z-index:2;width:min(1080px,calc(100% - 32px));margin:0 auto;padding:34px 0 70px}
+.hero{position:relative;overflow:hidden;padding:28px 30px;border:1px solid rgba(255,255,255,.88);border-radius:28px;background:linear-gradient(118deg,rgba(255,255,255,.92),rgba(249,255,250,.8));box-shadow:var(--shadow);backdrop-filter:blur(18px)}
+.hero:after{content:"";position:absolute;right:-62px;top:-105px;width:330px;height:330px;border-radius:43% 57% 52% 48%/49% 40% 60% 51%;background:repeating-radial-gradient(ellipse at 49% 51%,transparent 0 15px,rgba(15,143,134,.25) 16px 17px,transparent 18px 31px),repeating-radial-gradient(ellipse at 58% 43%,transparent 0 24px,rgba(255,157,204,.18) 25px 26px,transparent 27px 47px);opacity:.5;transform:rotate(-11deg);animation:sway 16s ease-in-out infinite alternate;pointer-events:none}
+.hero-top{position:relative;z-index:1;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+.eyebrow,.kicker,.tab,.updated span,.progress,.day-chip,.complete-badge,.read-only{font-family:"Courier New","PingFang SC",monospace}
+.eyebrow,.kicker{margin:0;color:var(--teal-dark);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+h1,h2,h3,p{margin-top:0}
+h1{margin:7px 0 8px;font-family:"Songti SC","STSong",Georgia,serif;font-size:clamp(32px,5vw,48px);line-height:1.05;letter-spacing:-.03em}
+.hero p:last-child{max-width:570px;margin:0;color:var(--muted);font-size:15px;line-height:1.65}
+.updated{position:relative;z-index:1;min-width:165px;padding:13px 15px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.72);text-align:right}
+.updated span{display:block;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.updated strong{display:block;margin-top:5px;font-size:14px}
+.read-only{display:inline-flex;margin-top:9px;padding:4px 8px;border-radius:999px;background:var(--pink-soft);color:#a05b7d;font-size:10px;font-weight:800;letter-spacing:.08em}
+.tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin:22px 0;padding:7px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.7);backdrop-filter:blur(12px)}
+.tab{min-height:48px;border:0;border-radius:13px;background:transparent;color:var(--muted);font-weight:800;letter-spacing:.05em;cursor:pointer}
+.tab.active{color:#fff;background:linear-gradient(135deg,#267e74,#176f66);box-shadow:0 10px 24px rgba(23,111,102,.19)}
+.view{animation:in .24s ease both}
+.view-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:5px 2px 18px}
+.view-head h2{margin:5px 0 0;font-family:"Songti SC","STSong",Georgia,serif;font-size:clamp(25px,4vw,34px);letter-spacing:-.03em}
+.progress{display:flex;align-items:baseline;gap:5px;padding:10px 0;font-weight:700}
+.progress strong{font-size:clamp(30px,5vw,42px);line-height:1;letter-spacing:-.06em}
+.progress span{color:var(--muted)}
+.summary{padding:18px 20px 20px;border:1px solid var(--line);border-radius:20px;background:var(--paper);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px)}
+.summary-top{display:flex;justify-content:space-between;gap:14px;margin-bottom:13px;color:var(--muted);font-size:13px;font-weight:700}
+.track{height:8px;overflow:hidden;border-radius:999px;background:rgba(43,70,61,.09)}
+.track i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#0f8f86,#74c7b9 58%,#ff9dcc);transition:width .28s ease}
+.week-title{margin:26px 2px 10px;font-size:16px}
+.week{display:grid;grid-template-columns:repeat(7,minmax(62px,1fr));gap:9px;overflow-x:auto;padding:2px 1px 8px}
+.day-chip{position:relative;min-height:104px;padding:10px 8px;border:1px solid rgba(43,70,61,.13);border-radius:16px;background:rgba(255,255,255,.72);text-align:center;backdrop-filter:blur(9px)}
+.day-chip.today{border-color:rgba(15,143,134,.48);background:linear-gradient(145deg,#e7fbf4,#fff0f7)}
+.day-chip.today:before{content:"今天";position:absolute;top:6px;right:6px;padding:2px 5px;border-radius:999px;background:var(--pink);color:#fff;font-size:9px;font-weight:800}
+.day-chip .weekday{display:block;margin-top:4px;color:var(--muted);font-size:11px;font-weight:700}
+.day-chip .number{display:block;margin:5px 0 7px;font-family:Georgia,serif;font-size:24px;font-weight:800;line-height:1}
+.day-chip .score{display:inline-flex;min-width:44px;justify-content:center;padding:4px 7px;border-radius:999px;background:rgba(255,255,255,.75);color:var(--muted);font-size:10px;font-weight:800}
+.list{display:grid;gap:11px;margin-top:12px}
+.task{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;min-height:76px;padding:12px 15px;border:1px solid var(--line);border-radius:18px;background:var(--paper);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px)}
+.task.done{background:var(--done);border-color:#d9dedb;color:var(--done-ink)}
+.task-main{display:flex;min-width:0;align-items:center;gap:13px}
+.check{display:inline-flex;width:30px;height:30px;flex:0 0 30px;align-items:center;justify-content:center;border:1.5px solid rgba(43,70,61,.3);border-radius:50%;background:#fff;color:transparent;font-size:17px;font-weight:900}
+.done .check{border-color:#909995;background:#909995;color:#fff}
+.task-copy{min-width:0}
+.task-copy strong{display:block;overflow:hidden;font-size:16px;text-overflow:ellipsis;white-space:nowrap}
+.task-copy small{display:block;margin-top:3px;color:var(--muted);font-size:12px;font-weight:650}
+.done .task-copy small{color:var(--done-ink)}
+.water{display:flex;align-items:center;gap:8px}
+.cups{display:flex;gap:5px}
+.cup{width:18px;height:24px;border:1.5px solid #7ca99f;border-radius:2px 2px 6px 6px;background:rgba(255,255,255,.75)}
+.cup.full{background:linear-gradient(180deg,rgba(117,200,189,.42) 34%,#75c8bd 35%);border-color:#75c8bd}
+.count,.elapsed{color:var(--muted);font-family:"Courier New",monospace;font-size:12px;font-weight:800}
+.timer{grid-column:1/-1;padding:12px 14px;border:1px solid rgba(43,70,61,.11);border-radius:15px;background:linear-gradient(130deg,rgba(255,255,255,.92),rgba(253,239,247,.72))}
+.timer-top{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}
+.timer-top strong{font-family:"Courier New",monospace;font-size:18px}
+.timer .track i{background:linear-gradient(90deg,#0f8f86,#f3e77d 58%,#ff9dcc)}
+.month-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px;align-items:start}
+.subject{padding:16px;border:1px solid var(--line);border-radius:18px;background:var(--paper);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px)}
+.subject.done{background:var(--done);border-color:#d9dedb;color:var(--done-ink)}
+.subject h3{margin:0 0 12px;font-size:17px}
+.complete-badge{display:inline-flex;margin:-5px 0 9px;padding:3px 8px;border-radius:999px;background:linear-gradient(135deg,rgba(255,157,204,.24),rgba(226,247,240,.92));color:#42746b;font-size:10px;font-weight:800}
+.month-task{display:flex;min-height:50px;align-items:center;gap:10px;padding:8px 10px;margin-top:7px;border:1px solid rgba(43,70,61,.11);border-radius:13px;background:rgba(255,255,255,.88);font-size:14px;font-weight:740}
+.month-task.done{background:var(--done);border-color:#d9dedb;color:var(--done-ink)}
+.month-task .check{width:25px;height:25px;flex-basis:25px;font-size:14px}
+footer{margin-top:28px;padding:18px 2px;color:var(--muted);font-size:12px;line-height:1.7;text-align:center}
+.error{padding:28px;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--muted);text-align:center}
+@keyframes sway{0%{transform:translate3d(-4px,2px,0) rotate(-.7deg) scale(1)}50%{transform:translate3d(8px,-7px,0) rotate(.9deg) scale(1.012)}100%{transform:translate3d(-2px,8px,0) rotate(-.35deg) scale(1.005)}}
+@keyframes blob{0%{transform:translate3d(0,0,0) rotate(0)}100%{transform:translate3d(-8px,7px,0) rotate(2deg) scale(1.015)}}
+@keyframes in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(max-width:760px){.app{width:calc(100% - 22px);padding:18px 0 48px}.hero{padding:23px 21px}.hero-top{display:block}.updated{margin-top:16px;text-align:left}.ambient svg{left:-72vw;width:145vw;min-width:0;opacity:.24}.week{grid-template-columns:repeat(7,64px)}.task{grid-template-columns:1fr}.timer{grid-column:auto}.month-list{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="ambient" aria-hidden="true"><svg viewBox="0 0 900 1200"><g class="soft" opacity=".22"><ellipse cx="230" cy="240" rx="210" ry="300" fill="#bcebdd"/><ellipse cx="500" cy="520" rx="220" ry="320" fill="#ff9dcc"/><ellipse cx="280" cy="930" rx="260" ry="300" fill="#9edce8"/></g><g class="lines"><path d="M145-40C93 77 87 191 151 292c62 98 24 211-2 319-38 157 27 314 151 379 128 67 274 18 350-91 70-100 62-222-3-324-59-93-40-218 23-309 61-88 53-211-24-294-76-82-206-97-301-47-72 36-145 55-200 35Z" stroke="#168f82"/><path d="M187-26c-36 102-35 204 23 290 59 87 22 196-8 301-34 120 17 238 118 302 112 71 246 24 307-65 58-86 50-193-7-279-60-90-40-205 22-292 65-91 52-203-29-269-75-61-174-59-252-15-54 31-128 61-174 27Z" stroke="#ff9dcc"/><path d="M239 24c-27 82-27 164 22 241 51 81 22 182-15 278-42 109 5 211 90 264 89 56 201 14 248-57 45-68 37-157-9-229-49-76-36-182 18-264 53-80 39-174-29-232-60-51-148-43-213-6-40 23-89 38-112 5Z" stroke="#e3cc4e"/><path d="M295 79c-18 63-13 126 28 192 45 72 24 161-13 246-38 86-3 172 68 218 76 49 169 13 205-48 36-60 24-136-17-199-42-65-30-157 19-225 45-63 28-139-29-186-52-42-123-28-174 3-31 18-69 20-87-1Z" stroke="#7fc9dc"/><path d="M47 207c84-52 123-21 172 23 41 37 116 43 151-10 38-57-1-112-54-127-48-14-80-57-48-99 33-43 99-42 144-6M27 574c69-68 147-63 220-17 61 38 123 33 174-23 55-60 140-50 186 17 36 52 15 116-39 137M77 705c64-35 116-23 166 15 61 47 137 37 184-19 49-59 127-48 172 7 39 48 32 116-17 145M93 907c75-56 153-46 218 12 55 49 128 34 167-26 44-67 130-64 183 0 37 44 37 103 1 146" stroke="#168f82"/></g></svg></div>
+<main class="app">
+<header class="hero"><div class="hero-top"><div><p class="eyebrow">Public Habit Log</p><h1 id="owner-title">我的习惯进度</h1><p>这是一个只读公开页面，任何人都可以查看我的天计划和月计划进度。</p></div><div class="updated"><span>Last updated</span><strong id="updated">加载中…</strong><span class="read-only">只读公开页</span></div></div></header>
+<nav class="tabs" role="tablist"><button class="tab active" data-tab="day">天计划</button><button class="tab" data-tab="month">月计划</button></nav>
+<div class="view" id="view"><div class="error">正在读取公开进度…</div></div>
+<footer>本页仅展示已发布的数据快照，访客无法修改内容。</footer>
+</main>
+<script>
+(()=>{"use strict";const view=document.getElementById("view"),updated=document.getElementById("updated"),ownerTitle=document.getElementById("owner-title");let data=null,tab="day";
+const esc=v=>String(v).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+const duration=ms=>{const s=Math.max(0,Math.floor((ms||0)/1000)),h=String(Math.floor(s/3600)).padStart(2,"0"),m=String(Math.floor(s%3600/60)).padStart(2,"0"),x=String(s%60).padStart(2,"0");return`${h}:${m}:${x}`};
+const done=item=>item.type==="water"?(item.cups||0)>=(item.target||5):item.type==="ielts"?(item.elapsedMs||0)>=(item.targetMs||7200000):Boolean(item.completed);
+const updateTime=value=>{if(!value)return"未记录";return new Intl.DateTimeFormat("zh-CN",{month:"long",day:"numeric",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(value))};
+const progress=items=>{const total=items.length,complete=items.filter(done).length;return{complete,total,percent:total?Math.round(complete/total*100):0}};
+function taskHTML(item){const ok=done(item);let extra="";if(item.type==="water"){const cups=Math.min(item.target||5,item.cups||0),target=item.target||5;extra=`<div class="water"><div class="cups">${Array.from({length:target},(_,i)=>`<span class="cup ${i<cups?"full":""}"></span>`).join("")}</div><span class="count">${cups}/${target} 杯</span></div>`}else if(item.type==="ielts"){const elapsed=Math.min(item.elapsedMs||0,item.targetMs||7200000),target=item.targetMs||7200000,pct=Math.min(100,Math.round(elapsed/target*100));extra=`<div class="timer"><div class="timer-top"><strong>${duration(elapsed)}</strong><span class="elapsed">${ok?"已完成":`剩余 ${duration(target-elapsed)}`}</span></div><div class="track"><i style="width:${pct}%"></i></div></div>`}return`<article class="task ${ok?"done":""}"><div class="task-main"><span class="check">✓</span><div class="task-copy"><strong>${esc(item.name)}</strong><small>${item.type==="water"?`${item.cups||0} / ${item.target||5} 杯`:ok?"已完成":item.type==="ielts"?`目标 2 小时 · 已计时 ${duration(item.elapsedMs)}`:"未完成"}</small></div></div>${extra}</article>`}
+function renderDay(){const d=data.day||{},items=d.items||[],p=progress(items),week=d.week||[];view.innerHTML=`<section class="view-head"><div><p class="kicker">Today</p><h2>${esc(d.label||"今天")}</h2></div><div class="progress"><strong>${p.complete}</strong><span>/ ${p.total}</span></div></section><section class="summary"><div class="summary-top"><span>今日进度</span><span>${p.percent}%</span></div><div class="track"><i style="width:${p.percent}%"></i></div></section><h3 class="week-title">近 7 天</h3><div class="week">${week.map(x=>`<div class="day-chip ${x.date===d.date?"today":""}"><span class="weekday">${esc(x.weekday||"")}</span><span class="number">${x.day||""}</span><span class="score">${x.completed||0}/${x.total||0}</span></div>`).join("")}</div><div class="list">${items.map(taskHTML).join("")||'<div class="error">暂无日计划数据</div>'}</div>`}
+function renderMonth(){const m=data.month||{},subjects=m.subjects||[],rows=subjects.flatMap(s=>[{done:Boolean(s.group)},{done:Boolean(s.personal)}]),p=progress(rows);view.innerHTML=`<section class="view-head"><div><p class="kicker">Current Month</p><h2>${esc(m.label||"本月计划")}</h2></div><div class="progress"><strong>${p.complete}</strong><span>/ ${p.total}</span></div></section><section class="summary"><div class="summary-top"><span>本月进度</span><span>${p.percent}%</span></div><div class="track"><i style="width:${p.percent}%"></i></div></section><div class="month-list">${subjects.map(s=>{const all=Boolean(s.group&&s.personal);return`<article class="subject ${all?"done":""}"><h3>${esc(s.name)}</h3>${all?'<span class="complete-badge">本月完成</span>':""}<div class="month-task ${s.group?"done":""}"><span class="check">✓</span><span>${esc(s.groupLabel||"小组作业")}</span></div><div class="month-task ${s.personal?"done":""}"><span class="check">✓</span><span>${esc(s.personalLabel||"个人作业")}</span></div></article>`}).join("")||'<div class="error">暂无月计划数据</div>'}</div>`}
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{tab=b.dataset.tab;document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));tab==="day"?renderDay():renderMonth()}));
+fetch(`./data.json?v=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json()}).then(d=>{data=d;ownerTitle.textContent=`${d.owner||"我的"}的习惯进度`;updated.textContent=updateTime(d.updatedAt);renderDay()}).catch(e=>{updated.textContent="读取失败";view.innerHTML='<div class="error"><strong>暂时无法读取公开进度</strong><br>请稍后刷新页面。</div>';console.error(e)})})();
+</script>
+</body>
+</html>
